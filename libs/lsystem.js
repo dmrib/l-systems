@@ -20,6 +20,9 @@ class LSystem
         this.ruleset = ruleset;
         this.buffer = new StringBuffer()
         this.steps = 0;
+
+        // initialize system buffer
+        this.buffer.insert(this.axiom);
     }
 
     /**
@@ -37,7 +40,7 @@ class LSystem
     derivate(construction)
     {
         // derivate each token of construction
-        for(let token of [...construction])
+        for(let token of [...construction.split('')])
         {
             // insert derivation into buffer
             try
