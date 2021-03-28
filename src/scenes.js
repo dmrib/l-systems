@@ -6,6 +6,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 600,
         decay: 4,
@@ -20,6 +21,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 600,
         decay: 4,
@@ -34,6 +36,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 600,
         decay: 2,
@@ -49,6 +52,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 100,
         decay: 2,
@@ -63,6 +67,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
@@ -77,6 +82,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
@@ -91,6 +97,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
@@ -105,6 +112,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
@@ -119,6 +127,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
@@ -133,6 +142,7 @@ const SCENES = [
             '-': '-',
             '+': '+'
         },
+        maxDerivations: 5,
         angle: 90,
         distance: 50,
         decay: 2,
