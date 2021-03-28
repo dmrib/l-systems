@@ -26,7 +26,7 @@ let lsystem;
 function preload()
 {
     // load 'Chango' font
-    chango = loadFont('../assets/Chango-Regular.ttf');
+    chango = loadFont('assets/Chango-Regular.ttf');
 }
 
 
