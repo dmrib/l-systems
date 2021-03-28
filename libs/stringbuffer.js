@@ -1,70 +1,66 @@
 /**
- * String buffer implementation.
+ * String buffer.
  */
+
+
 class StringBuffer
 {
     /**
      * Constructor.
-     * 
-     * Returns:
-     *  undefined.
+     *
+     * @constructor
      */
     constructor()
     {
         // store components
         this.buffer = [];
-        this.length = 0;
     }
 
+
     /**
-     * I insert a string construction into buffer.
-     * 
-     * Args:
-     *  construction(string): construction to be added
-     * 
-     * Returns:
-     *  undefined.
+     * Inserts a string construction into buffer.
+     *
+     * @param {string} construction - construction to be added to buffer
      */
     insert(construction)
     {
         // construction has multiple characters: extend buffer
-        if(construction.length > 1)
+        if(this.buffer.length > 1)
         {
             this.buffer.push(...construction.split(''));
-            this.length += construction.length;
         }
 
         // construction is a single character: insert it using indexing (faster)
         else
         {
-            this.buffer[this.length] = construction;
-            this.length++;
+            this.buffer[this.buffer.length] = construction;
         }
     }
 
+
     /**
-     * I clear the buffer.
-     * 
-     * Returns:
-     *  content(string): buffer previously stored content
+     * Clear buffer and returns previously bufferized string.
+     *
+     * @returns {string} - previously bufferized string
      */
     flush()
     {
+        // get current buffer content
         const content = this.buffer.join('');
 
-        this.length = 0;
+        // restart buffer
         this.buffer = [];
 
         return content;
     }
 
+
     /**
-     * I expose the buffer current state.
-     * 
-     * Returns:
-     *  (string): buffer content
+     * Exposes the buffer current state.
+     *
+     * @returns {string} - current buffer state
      */
-    state()
+    get state()
     {
         return this.buffer.join('');
     }

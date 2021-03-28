@@ -25,6 +25,18 @@ class LSystem
         this.buffer.insert(this.axiom);
     }
 
+
+    /**
+     * Exposes system current buffer state.
+     *
+     * @returns {string} - current buffer state
+     */
+    get state()
+    {
+        return this.buffer.state;
+    }
+
+
     /**
      * Derives next construction according to my ruleset.
      */

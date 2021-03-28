@@ -36,7 +36,7 @@ function draw()
     background(...BACKGROUND_COLOR);
 
     // draw current L-system state
-    turtle.draw(lsystem.buffer.state());
+    turtle.draw(lsystem.state);
 }
 
 
