@@ -66,7 +66,7 @@ function keyPressed()
 function mouseClicked()
 {
     // derivate next L-system state
-    lsystem.derivate(lsystem.buffer.flush());
+    lsystem.derive();
 
     // call p5.js drawing function
     redraw();

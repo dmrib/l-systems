@@ -1,17 +1,17 @@
 /**
  * L-System abstraction.
  */
+
+
 class LSystem
 {
     /**
      * Constructor.
-     * 
-     * Args:
-     *  axiom(string): initial axiom
-     *  ruleset(Object): system derivation ruleset
-     * 
-     * Returns:
-     *  undefined.
+     *
+     * @constructor
+     *
+     * @param {string} axiom - L-system inital axiom
+     * @param {Object} ruleset - L-system ruleset
      */
     constructor(axiom, ruleset)
     {
@@ -21,26 +21,17 @@ class LSystem
         this.buffer = new StringBuffer()
         this.steps = 0;
 
-        // initialize system buffer
+        // initialize buffer
         this.buffer.insert(this.axiom);
     }
 
     /**
-     * I derivate a construction according to my ruleset.
-     * 
-     * Args:
-     *  construction(string): construction to be derivated
-     * 
-     * Returns:
-     *  undefined.
-     * 
-     * Raises:
-     *  InvalidToken: on token not in system's alphabet
+     * Derives next construction according to my ruleset.
      */
-    derivate(construction)
+    derive()
     {
         // derivate each token of construction
-        for(let token of [...construction.split('')])
+        for (let token of [...this.buffer.flush().split('')])
         {
             // insert derivation into buffer
             try
