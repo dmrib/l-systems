@@ -16,6 +16,10 @@ Given a ruleset, it will derive axioms and render instructions using a Turtle dr
 
 Made when I was reading [The Nature of Code](https://natureofcode.com/).
 
+### Usage
+
+Click anywhere on the screen to advance to next derivation or grammar.
+
 ### How to run
 
 Simply run a HTTP server on the repository root.
