@@ -3,17 +3,6 @@
  */
 
 
-COLORS = [
-    [48, 27, 63],
-    [60, 65, 92],
-    [180, 165, 165],
-    [212, 64, 0],
-    [24, 77, 71],
-    [250, 213, 134],
-    [144, 55, 73]
-]
-
-
 class Turtle
 {
     /**
@@ -49,8 +38,7 @@ class Turtle
     draw(sequence)
     {
         // set line color
-        const color = [...COLORS[int(random(0, COLORS.length))]];
-        stroke(...color);
+        stroke(TURTLE_COLOR);
         strokeWeight(2);
 
         // push transformation matrix
