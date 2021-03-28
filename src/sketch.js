@@ -1,7 +1,13 @@
-// Constants and definitions
-const CANVAS_SIZE = 800;
+/**
+ * p5.js sketch.
+ */
+
+
+// colors definition
 const BACKGROUND_COLOR = [98, 139, 143];
-let CURRENT_SCENE = 0;
+
+// define L-system state
+let currentScene = 0;
 let lsystem;
 
 
@@ -10,63 +16,80 @@ let lsystem;
  */
 function setup()
 {
+    // create drawing canvas
     createCanvas(windowWidth, windowHeight);
+
+    // stop drawing loop
     noLoop();
 
-    scene(CURRENT_SCENE);
-
-    redraw();
+    // draw initial scene
+    loadScene();
 }
 
-/**
- * p5.js key pressed callback.
- */
-function keyPressed() {
-    if (keyCode === RIGHT_ARROW) 
-    {
-    CURRENT_SCENE + 1 === SCENES.length ? CURRENT_SCENE = 0 : CURRENT_SCENE++;
-    scene = SCENES[CURRENT_SCENE];
-    lsystem = new LSystem(scene.axiom, scene.ruleset);
-    turtle = new Turtle(scene.x, 
-                        scene.y,
-                        scene.distance, 
-                        radians(scene.angle), 
-                        scene.decay);
-
-    redraw();
-    }
-}
-
-/**
- * Scene setup.
- */
-function scene()
-{
-    scene = SCENES[CURRENT_SCENE];
-    lsystem = new LSystem(scene.axiom, scene.ruleset);
-    turtle = new Turtle(scene.x, 
-                        scene.y,
-                        scene.distance, 
-                        radians(scene.angle), 
-                        scene.decay);
-
-    redraw();
-}
 
 /**
  * p5.js draw function.
  */
 function draw()
 {
+    // clean background
     background(...BACKGROUND_COLOR);
+
+    // draw current L-system state
     turtle.draw(lsystem.buffer.state());
 }
 
+
 /**
- * p5.js mouse clicked callback
+ * p5.js key pressed callback.
+ */
+function keyPressed()
+{
+    // right arrow is pressed: move to next scene
+    if (keyCode === RIGHT_ARROW)
+    {
+        // get next scene index
+        currentScene + 1 === SCENES.length ? currentScene = 0 : currentScene++;
+
+        // setup next scene
+        loadScene();
+
+        // call p5.js drawing function
+        redraw();
+    }
+}
+
+
+/**
+ * p5.js mouse clicked callback.
  */
 function mouseClicked()
 {
+    // derivate next L-system state
     lsystem.derivate(lsystem.buffer.flush());
+
+    // call p5.js drawing function
     redraw();
+}
+
+
+/**
+ * Scene setup.
+ */
+function loadScene()
+{
+    // load scene parameters
+    scene = SCENES[currentScene];
+
+    // restart L-system
+    lsystem = new LSystem(scene.axiom, scene.ruleset);
+
+    // restart turtle drawer
+    turtle = new Turtle(
+        scene.x,
+        scene.y,
+        scene.distance,
+        radians(scene.angle),
+        scene.decay
+    );
 }
