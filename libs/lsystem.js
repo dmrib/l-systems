@@ -29,7 +29,7 @@ class LSystem
     /**
      * Exposes system current buffer state.
      *
-     * @returns {string} - current buffer state
+     * @returns {string[]} - current buffer state
      */
     get state()
     {
@@ -43,19 +43,9 @@ class LSystem
     derive()
     {
         // derivate each token of construction
-        for (let token of [...this.buffer.flush().split('')])
+        for (let token of this.buffer.flush())
         {
-            // insert derivation into buffer
-            try
-            {
-                this.buffer.insert(this.ruleset[token]);
-            }
-
-            // invalid token found: give warning and ignore it
-            catch(TypeError)
-            {
-                console.log(`Invalid token '${token}' ignored.`);
-            }
+            this.buffer.insert(this.ruleset[token]);
         }
     }
 }

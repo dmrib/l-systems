@@ -24,29 +24,19 @@ class StringBuffer
      */
     insert(construction)
     {
-        // construction has multiple characters: extend buffer
-        if(this.buffer.length > 1)
-        {
-            this.buffer.push(...construction.split(''));
-        }
-
-        // construction is a single character: insert it using indexing (faster)
-        else
-        {
-            this.buffer[this.buffer.length] = construction;
-        }
+        this.buffer.push(...construction.split(''));
     }
 
 
     /**
      * Clear buffer and returns previously bufferized string.
      *
-     * @returns {string} - previously bufferized string
+     * @returns {string[]} - previously bufferized string
      */
     flush()
     {
         // get current buffer content
-        const content = this.buffer.join('');
+        const content = [...this.buffer];
 
         // restart buffer
         this.buffer = [];
@@ -58,10 +48,10 @@ class StringBuffer
     /**
      * Exposes the buffer current state.
      *
-     * @returns {string} - current buffer state
+     * @returns {string[]} - current buffer state
      */
     get state()
     {
-        return this.buffer.join('');
+        return this.buffer;
     }
 }

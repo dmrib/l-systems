@@ -1,20 +1,31 @@
 /**
  * Turtle commands renderer abstraction.
  */
+
+
+COLORS = [
+    [48, 27, 63],
+    [60, 65, 92],
+    [180, 165, 165],
+    [212, 64, 0],
+    [24, 77, 71],
+    [250, 213, 134],
+    [144, 55, 73]
+]
+
+
 class Turtle
 {
     /**
      * Constructor.
-     * 
-     * Args:
-     *  x(number): initial x coordinate
-     *  y(number): initial y coordinate
-     *  distance(number): initial step size
-     *  angle(number): rotation angle
-     *  decay(number): step size decrement factor
-     * 
-     * Returns:
-     *  undefined.
+     *
+     * @constructor
+     *
+     * @param {Number} x - initial 'x' coordinate
+     * @param {Number} y - initial 'y'
+     * @param {Number} distance - distance between each steps
+     * @param {Number} angle - rotation angle
+     * @param {Number} decay - decay rate between steps
      */
     constructor(x, y, distance, angle, decay)
     {
@@ -31,20 +42,14 @@ class Turtle
     }
 
     /**
-     * I draw according to a given sequence.
-     * 
-     * Args:
-     *  sequence(string): drawing instructions
-     * 
-     * Returns:
-     *  undefined.
+     * Draws sequence of turtle commands.
+     *
+     * @param {string} sequence - sequence of turtle commands
      */
     draw(sequence)
     {
         // set line color
-        const color = [int(random(0, 255)),
-                       int(random(0, 255)),
-                       int(random(0, 255))]
+        const color = [...COLORS[int(random(0, COLORS.length))]];
         stroke(...color);
         strokeWeight(2);
 
@@ -52,11 +57,10 @@ class Turtle
         push();
 
         // initialize in centered position
-        translate(int(random(200, 1000)),
-                  int(random(200, 1000)));
+        translate(windowWidth / 2, windowHeight / 2);
 
         // draw sequence
-        for(let step of [...sequence.split('')])
+        for(let step of sequence)
         {
             switch(step)
             {

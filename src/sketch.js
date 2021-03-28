@@ -4,7 +4,7 @@
 
 
 // colors definition
-const BACKGROUND_COLOR = [98, 139, 143];
+const BACKGROUND_COLOR = [0, 0, 0];
 
 // define L-system state
 let currentScene = 0;
