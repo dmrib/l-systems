@@ -7,6 +7,13 @@ This is a simple implementation of a [L-systems](https://en.wikipedia.org/wiki/L
 
 Given a ruleset, it will derive axioms and render instructions using a Turtle drawer.
 
+| Rule | Effect                                                |
+|------|-------------------------------------------------------|
+| F    | Draw a line of `stepSize` and translate to end point. |
+| f    | Move to the end point without drawing.                |
+| +    | Rotate by `angle`                                     |
+| -    | Rotate by -`angle`                                    |
+
 Made when I was reading [The Nature of Code](https://natureofcode.com/).
 
 ### How to run

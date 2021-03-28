@@ -1,4 +1,4 @@
-const SCENES = [
+const GRAMMARS = [
     {
         axiom: 'F-F-F-F',
         ruleset: {

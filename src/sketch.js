@@ -16,7 +16,7 @@ let chango;
 
 // define L-system state
 let iteration = 1;
-let currentScene = 0;
+let currentGrammar = 0;
 let lsystem;
 
 
@@ -41,8 +41,8 @@ function setup()
     // stop drawing loop
     noLoop();
 
-    // draw initial scene
-    loadScene();
+    // draw initial grammar
+    loadGrammar();
 
     // clean background
     background(BACKGROUND_COLOR);
@@ -60,7 +60,7 @@ function draw()
     // draw current L-system state
     turtle.draw(lsystem.state);
 
-    // display scene info
+    // display grammar info
     displayInfo();
 }
 
@@ -70,7 +70,7 @@ function draw()
  */
 function mouseClicked()
 {
-    if (iteration === SCENES[currentScene].maxDerivations)
+    if (iteration === GRAMMARS[currentGrammar].maxDerivations)
     {
         iteration = 1;
         nextScene();
@@ -85,37 +85,37 @@ function mouseClicked()
 
 
 /**
- * Scene setup.
+ * Grammar setup.
  */
-function loadScene()
+function loadGrammar()
 {
-    // load scene parameters
-    scene = SCENES[currentScene];
+    // load grammar parameters
+    grammar = GRAMMARS[currentGrammar];
 
     // restart L-system
-    lsystem = new LSystem(scene.axiom, scene.ruleset);
+    lsystem = new LSystem(grammar.axiom, grammar.ruleset);
 
     // restart turtle drawer
     turtle = new Turtle(
-        scene.x,
-        scene.y,
-        scene.distance,
-        radians(scene.angle),
-        scene.decay
+        grammar.x,
+        grammar.y,
+        grammar.distance,
+        radians(grammar.angle),
+        grammar.decay
     );
 }
 
 
 /**
- * Forward sketch to next scene.
+ * Forward sketch to next grammar.
  */
 function nextScene()
 {
-    // get next scene index
-    currentScene + 1 === SCENES.length ? currentScene = 0 : currentScene++;
+    // get next grammar index
+    currentGrammar + 1 === GRAMMARS.length ? currentGrammar = 0 : currentGrammar++;
 
-    // setup next scene
-    loadScene();
+    // setup next grammar
+    loadGrammar();
 
     // call p5.js drawing function
     redraw();
@@ -148,7 +148,7 @@ function displayInfo()
     fill(INFO_COLOR);
     stroke(INFO_COLOR);
     textSize(MEDIUM);
-    text(`(${currentScene + 1}/${SCENES.length})`, 50, (windowHeight * 0.2))
+    text(`(${currentGrammar + 1}/${GRAMMARS.length})`, 50, (windowHeight * 0.2))
 
     fill(ENTRY_COLOR);
     stroke(ENTRY_COLOR);
@@ -158,7 +158,7 @@ function displayInfo()
     fill(INFO_COLOR);
     stroke(INFO_COLOR);
     textSize(MEDIUM);
-    text(`${SCENES[currentScene].axiom}`, 50, (windowHeight * 0.35))
+    text(`${GRAMMARS[currentGrammar].axiom}`, 50, (windowHeight * 0.35))
 
     fill(ENTRY_COLOR);
     stroke(ENTRY_COLOR);
@@ -168,7 +168,7 @@ function displayInfo()
     fill(INFO_COLOR);
     stroke(INFO_COLOR);
     textSize(MEDIUM);
-    text(`(${iteration}/${SCENES[currentScene].maxDerivations})`, 50, (windowHeight * 0.5))
+    text(`(${iteration}/${GRAMMARS[currentGrammar].maxDerivations})`, 50, (windowHeight * 0.5))
 
     fill(ENTRY_COLOR);
     stroke(ENTRY_COLOR);
@@ -186,12 +186,12 @@ function displayInfo()
     text(`Ruleset:`, 50, (windowHeight * 0.75))
 
     let i = 0.8;
-    for (let rule in SCENES[currentScene].ruleset)
+    for (let rule in GRAMMARS[currentGrammar].ruleset)
     {
         fill(INFO_COLOR);
         stroke(INFO_COLOR);
         textSize(MEDIUM);
-        text(`${rule}: ${SCENES[currentScene].ruleset[rule]}`, 50, (windowHeight * i));
+        text(`${rule}: ${GRAMMARS[currentGrammar].ruleset[rule]}`, 50, (windowHeight * i));
         i += 0.05;
     }
 }
